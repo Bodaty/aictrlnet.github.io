@@ -1,4 +1,4 @@
-title: AICtrlNet Blog
+title: AICtrlNet
 description: AI orchestration with humans in the loop
 url: "https://aictrlnet.com"
 baseurl: ""
@@ -9,7 +9,7 @@ author:
   name: Bobby Bodaty
   email: bobby@aictrlnet.com
 
-# Social links (optional - shown in footer)
+# Social links
 social:
   twitter: aictrlnet
   github: Bodaty
@@ -18,7 +18,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Post defaults
+# Post defaults - all posts go under /blog/
 defaults:
   - scope:
       path: ""
@@ -29,7 +29,15 @@ defaults:
 
 # Build settings
 markdown: kramdown
-permalink: /:year/:month/:title/
 
-# Show excerpts on home page
+# Posts live at /blog/YYYY/MM/title/
+permalink: /blog/:year/:month/:title/
+
+# Show excerpts on blog index
 show_excerpts: true
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
