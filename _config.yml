@@ -1,0 +1,35 @@
+title: AICtrlNet Blog
+description: AI orchestration with humans in the loop
+url: "https://aictrlnet.com"
+baseurl: ""
+
+theme: minima
+
+author:
+  name: Bobby Bodaty
+  email: bobby@aictrlnet.com
+
+# Social links (optional - shown in footer)
+social:
+  twitter: aictrlnet
+  github: Bodaty
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Post defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Bobby Bodaty"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:title/
+
+# Show excerpts on home page
+show_excerpts: true
