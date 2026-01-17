@@ -2,7 +2,7 @@
 layout: post
 title: "Why AI Governance Can't Be an Afterthought"
 date: 2026-01-18
-author: Bobby Bodaty
+author: Srirajasekhar "Bobby" Koritala
 categories: [ai, governance, enterprise]
 excerpt: "Companies are racing to deploy AI agents. The smart ones are building governance in from day one."
 ---
@@ -246,7 +246,7 @@ More details coming very soon.
 
 ---
 
-*Bobby Bodaty has been building production AI systems for nearly a decade. He holds multiple patents in AI and human-AI collaboration systems, and has deployed AI in regulated industries including healthcare and finance.*
+*Srirajasekhar "Bobby" Koritala is the founder of Bodaty. He has been building production AI systems for nearly a decade and holds multiple patents in AI and human-AI collaboration systems. He has deployed AI in regulated industries including healthcare and finance.*
 
 ---
 

@@ -25,4 +25,8 @@ As AI agents become more capable, the question isn't whether to use them—it's 
 
 ## Contact
 
+## About the Author
+
+**Srirajasekhar "Bobby" Koritala** is the founder of Bodaty. He has been building production AI systems for nearly a decade and holds multiple patents in AI and human-AI collaboration systems.
+
 Questions? Reach out at [hello@aictrlnet.com](mailto:hello@aictrlnet.com)

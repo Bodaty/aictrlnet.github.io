@@ -2,7 +2,7 @@
 layout: post
 title: "The Protocol Wars: MCP, A2A, and Why Humans Are Still the Missing Piece"
 date: 2026-01-16
-author: Bobby Bodaty
+author: Srirajasekhar "Bobby" Koritala
 categories: [ai, protocols, mcp]
 excerpt: "As AI protocols battle for dominance, we're missing the most important integration point of all—humans."
 ---
@@ -195,7 +195,7 @@ In the meantime, I'm curious: what are the biggest gaps you see in current AI pr
 
 ---
 
-*Bobby Bodaty has been building production AI systems for nearly a decade. He holds multiple patents in AI and human-AI collaboration systems.*
+*Srirajasekhar "Bobby" Koritala is the founder of Bodaty. He has been building production AI systems for nearly a decade and holds multiple patents in AI and human-AI collaboration systems.*
 
 ---
 

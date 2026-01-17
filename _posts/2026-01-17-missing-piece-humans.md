@@ -2,7 +2,7 @@
 layout: post
 title: "The Missing Piece in AI Orchestration: Humans"
 date: 2026-01-17
-author: Bobby Bodaty
+author: Srirajasekhar "Bobby" Koritala
 categories: [ai, hitl, orchestration]
 excerpt: "Every AI orchestration platform focuses on connecting agents. Almost none focus on connecting humans."
 ---
@@ -223,7 +223,7 @@ More soon.
 
 ---
 
-*Bobby Bodaty has been building production AI systems for nearly a decade. He holds multiple patents in AI and human-AI collaboration systems.*
+*Srirajasekhar "Bobby" Koritala is the founder of Bodaty. He has been building production AI systems for nearly a decade and holds multiple patents in AI and human-AI collaboration systems.*
 
 ---
 
