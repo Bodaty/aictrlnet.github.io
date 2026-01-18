@@ -48,22 +48,22 @@ When an AI hands off to a human, context collapses.
 
 <div class="mermaid">
 graph LR
-    subgraph "AI's Full Context"
+    subgraph context["AI's Full Context"]
         Data[📊 Raw Data]
         Analysis[🔍 Analysis]
-        Alternatives[🔀 Alternatives<br/>Considered]
-        Confidence[📈 Confidence<br/>Score]
-        Reasoning[💭 Chain of<br/>Reasoning]
+        Alternatives[🔀 Alternatives Considered]
+        Confidence[📈 Confidence Score]
+        Reasoning[💭 Chain of Reasoning]
     end
 
-    subgraph "What Human Sees"
-        Output[📋 Output:<br/>"Approve Loan"]
+    subgraph human["What Human Sees"]
+        Output[📋 Output: Approve Loan]
     end
 
     Data --> Analysis --> Output
-    Alternatives -.->|Lost| X1[❌]
-    Confidence -.->|Lost| X2[❌]
-    Reasoning -.->|Lost| X3[❌]
+    Alternatives -.->|Lost| X1[X]
+    Confidence -.->|Lost| X2[X]
+    Reasoning -.->|Lost| X3[X]
 
     style Output fill:#ffe6e6,stroke:#cc0000
     style X1 fill:#ffcccc
@@ -128,14 +128,6 @@ graph LR
     Extract[🤖 AI: Extract Data] --> Analyze[🤖 AI: Analyze]
     Analyze --> Validate[👤 Human: Validate]
     Validate --> Execute[🤖 AI: Execute]
-
-    subgraph "Same Interface"
-        direction TB
-        I1[Structured Input]
-        I2[Structured Output]
-        I3[Success / Fail / Timeout]
-        I4[Logged & Auditable]
-    end
 
     style Validate fill:#ffe6e6,stroke:#cc0000,stroke-width:2px
     style Extract fill:#e6f3ff

@@ -55,12 +55,12 @@ The tragedy is that governance isn't actually that hard—if you design for it f
 
 <div class="mermaid">
 graph TB
-    subgraph "The Five Pillars of AI Governance"
-        E[🔍 Explainability<br/>"Why did the AI decide this?"]
-        A[👤 Accountability<br/>"Who is responsible?"]
-        Au[📋 Auditability<br/>"What happened and when?"]
-        C[🎛️ Controllability<br/>"Can we stop or change it?"]
-        F[⚖️ Fairness<br/>"Is the system biased?"]
+    subgraph pillars["The Five Pillars of AI Governance"]
+        E[🔍 Explainability]
+        A[👤 Accountability]
+        Au[📋 Auditability]
+        C[🎛️ Controllability]
+        F[⚖️ Fairness]
     end
 
     E --- A
@@ -183,16 +183,16 @@ Here's the alternative: design for governance from day one.
 
 <div class="mermaid">
 graph LR
-    subgraph "❌ Bolt-On Governance"
+    subgraph bolton["Bolt-On Governance"]
         B1[Build AI] --> B2[Deploy] --> B3[Compliance Review]
-        B3 -->|"Missing data"| B4[Retrofit]
-        B4 -->|"Rearchitect"| B5[Delay/Cancel]
+        B3 -->|Missing data| B4[Retrofit]
+        B4 -->|Rearchitect| B5[Delay/Cancel]
     end
 
-    subgraph "✅ Governance-First"
-        G1[Design with<br/>Governance] --> G2[Build + Log<br/>Everything]
+    subgraph govfirst["Governance-First"]
+        G1[Design with Governance] --> G2[Build + Log Everything]
         G2 --> G3[Compliance Review]
-        G3 -->|"All data available"| G4[✅ Deploy]
+        G3 -->|All data available| G4[Deploy]
     end
 
     style B5 fill:#ffcccc
