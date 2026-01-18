@@ -17,6 +17,33 @@ But after nine years of building AI systems—including several patented ones—
 
 Let me break down what's actually happening.
 
+<div class="mermaid">
+graph TB
+    subgraph "Current Protocol Focus"
+        MCP[MCP<br/>Context Sharing]
+        A2A[A2A<br/>Agent Coordination]
+        SDK[OpenAI SDK<br/>Agent Framework]
+    end
+
+    MCP --> AI1[AI Agent]
+    A2A --> AI2[AI Agent]
+    SDK --> AI3[AI Agent]
+
+    AI1 <--> AI2
+    AI2 <--> AI3
+    AI1 <--> AI3
+
+    Human[👤 Human]
+    Human -.->|"?"| AI1
+    Human -.->|"?"| AI2
+    Human -.->|"?"| AI3
+
+    style Human fill:#ffcccc,stroke:#cc0000
+    style MCP fill:#e6f3ff,stroke:#0066cc
+    style A2A fill:#e6ffe6,stroke:#00cc00
+    style SDK fill:#fff0e6,stroke:#cc6600
+</div>
+
 ### MCP: Anthropic's Model Context Protocol
 
 MCP (Model Context Protocol) is Anthropic's attempt to standardize how AI models share context. Announced in November 2024, it's designed as an open protocol that creates a universal way for AI assistants to connect with data sources and tools[^1].
@@ -77,6 +104,20 @@ Research from Stanford's Human-Centered AI Institute consistently shows that hum
 
 Consider a common workflow: an AI agent analyzes customer data, generates a recommendation, and takes action.
 
+<div class="mermaid">
+graph LR
+    subgraph "Current: AI-Only Pipeline"
+        D1[📊 Data Agent] --> A1[🔍 Analysis Agent]
+        A1 --> R1[💡 Recommendation Agent]
+        R1 --> E1[⚡ Action Agent]
+    end
+
+    style D1 fill:#e6f3ff
+    style A1 fill:#e6f3ff
+    style R1 fill:#e6f3ff
+    style E1 fill:#e6f3ff
+</div>
+
 With current protocols, the AI-to-AI parts work great:
 1. Data agent extracts information ✓
 2. Analysis agent processes it ✓
@@ -84,6 +125,22 @@ With current protocols, the AI-to-AI parts work great:
 4. Action agent executes ✓
 
 But what if step 3 should have been "Human reviews options before action"?
+
+<div class="mermaid">
+graph LR
+    subgraph "Needed: Human-Aware Pipeline"
+        D2[📊 Data Agent] --> A2[🔍 Analysis Agent]
+        A2 --> R2[💡 Recommendation Agent]
+        R2 --> H2[👤 Human Review]
+        H2 --> E2[⚡ Action Agent]
+    end
+
+    style D2 fill:#e6f3ff
+    style A2 fill:#e6f3ff
+    style R2 fill:#e6f3ff
+    style H2 fill:#ffe6e6,stroke:#cc0000,stroke-width:2px
+    style E2 fill:#e6f3ff
+</div>
 
 Current protocols don't have a clean answer for this. You're left bolting on custom solutions:
 - A Slack notification that someone might miss
@@ -153,11 +210,29 @@ MCP is great for AI-to-AI context. We need the same rigor for AI-to-human and hu
 
 Protocols should support routing decisions based on confidence:
 
-```
-If confidence > 90%: proceed autonomously
-If confidence 70-90%: notify human, proceed if no objection
-If confidence < 70%: require human approval
-```
+<div class="mermaid">
+graph TD
+    AI[🤖 AI Decision] --> Conf{Confidence?}
+
+    Conf -->|"> 90%"| Auto[✅ Auto-Execute]
+    Conf -->|"70-90%"| Notify[📧 Notify Human<br/>Proceed if no objection]
+    Conf -->|"< 70%"| Require[⏸️ Require Approval]
+
+    Auto --> Log[📋 Log for Audit]
+    Notify --> Log
+    Require --> Human[👤 Human Reviews]
+    Human --> Decide{Decision}
+    Decide -->|Approve| Execute[⚡ Execute]
+    Decide -->|Reject| Stop[🛑 Stop]
+    Execute --> Log
+    Stop --> Log
+
+    style AI fill:#e6f3ff
+    style Human fill:#ffe6e6
+    style Auto fill:#e6ffe6
+    style Notify fill:#fff0e6
+    style Require fill:#ffe6e6
+</div>
 
 This isn't just a nice-to-have. For regulated industries, it's becoming mandatory.
 

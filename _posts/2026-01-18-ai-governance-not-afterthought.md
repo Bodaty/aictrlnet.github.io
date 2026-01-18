@@ -19,6 +19,20 @@ I've seen this pattern repeat across healthcare, finance, and every other regula
 
 Here's what typically happens:
 
+<div class="mermaid">
+gantt
+    title The Governance Gap: A Common AI Project Timeline
+    dateFormat  YYYY-MM
+    section Development
+    Build AI System           :done, dev, 2025-01, 6M
+    section Launch Prep
+    Demo to Stakeholders      :done, demo, 2025-07, 1M
+    Legal/Compliance Review   :crit, review, 2025-08, 2M
+    section Outcome
+    Retrofit Governance       :crit, retrofit, 2025-10, 3M
+    Project Delayed           :crit, delay, 2026-01, 2M
+</div>
+
 **Month 1-6:** Build the AI system. Focus on accuracy, performance, features. Governance is "we'll figure that out later."
 
 **Month 7:** Demo to stakeholders. Everyone's excited.
@@ -38,6 +52,28 @@ The tragedy is that governance isn't actually that hard—if you design for it f
 ## What Governance Actually Means
 
 "AI governance" sounds abstract. Let me make it concrete.
+
+<div class="mermaid">
+graph TB
+    subgraph "The Five Pillars of AI Governance"
+        E[🔍 Explainability<br/>"Why did the AI decide this?"]
+        A[👤 Accountability<br/>"Who is responsible?"]
+        Au[📋 Auditability<br/>"What happened and when?"]
+        C[🎛️ Controllability<br/>"Can we stop or change it?"]
+        F[⚖️ Fairness<br/>"Is the system biased?"]
+    end
+
+    E --- A
+    A --- Au
+    Au --- C
+    C --- F
+
+    style E fill:#e6f3ff
+    style A fill:#ffe6e6
+    style Au fill:#e6ffe6
+    style C fill:#fff0e6
+    style F fill:#f0e6ff
+</div>
 
 Governance means being able to answer these questions:
 
@@ -144,6 +180,24 @@ If you bolt on governance, you're also bolting on process. That's the hardest pa
 ## What Governance-First Looks Like
 
 Here's the alternative: design for governance from day one.
+
+<div class="mermaid">
+graph LR
+    subgraph "❌ Bolt-On Governance"
+        B1[Build AI] --> B2[Deploy] --> B3[Compliance Review]
+        B3 -->|"Missing data"| B4[Retrofit]
+        B4 -->|"Rearchitect"| B5[Delay/Cancel]
+    end
+
+    subgraph "✅ Governance-First"
+        G1[Design with<br/>Governance] --> G2[Build + Log<br/>Everything]
+        G2 --> G3[Compliance Review]
+        G3 -->|"All data available"| G4[✅ Deploy]
+    end
+
+    style B5 fill:#ffcccc
+    style G4 fill:#ccffcc
+</div>
 
 ### Every Decision Is Logged
 

@@ -46,6 +46,31 @@ After building AI systems for nine years, I've identified three reasons why HITL
 
 When an AI hands off to a human, context collapses.
 
+<div class="mermaid">
+graph LR
+    subgraph "AI's Full Context"
+        Data[📊 Raw Data]
+        Analysis[🔍 Analysis]
+        Alternatives[🔀 Alternatives<br/>Considered]
+        Confidence[📈 Confidence<br/>Score]
+        Reasoning[💭 Chain of<br/>Reasoning]
+    end
+
+    subgraph "What Human Sees"
+        Output[📋 Output:<br/>"Approve Loan"]
+    end
+
+    Data --> Analysis --> Output
+    Alternatives -.->|Lost| X1[❌]
+    Confidence -.->|Lost| X2[❌]
+    Reasoning -.->|Lost| X3[❌]
+
+    style Output fill:#ffe6e6,stroke:#cc0000
+    style X1 fill:#ffcccc
+    style X2 fill:#ffcccc
+    style X3 fill:#ffcccc
+</div>
+
 The AI "knows" why it made a decision—it has the full chain of reasoning, the data it analyzed, the alternatives it considered. But surfacing that to a human in a useful way? That's a different problem entirely.
 
 Most systems show humans the output ("Recommend: Approve loan") without the reasoning ("Based on credit score 720, debt-to-income 0.3, similar approved applications, confidence 87%").
@@ -98,9 +123,25 @@ Let me describe what I think proper HITL should look like. This isn't theoretica
 
 In a well-designed system, a human is just another node type:
 
-```
-[AI: Extract Data] → [AI: Analyze] → [Human: Validate] → [AI: Execute]
-```
+<div class="mermaid">
+graph LR
+    Extract[🤖 AI: Extract Data] --> Analyze[🤖 AI: Analyze]
+    Analyze --> Validate[👤 Human: Validate]
+    Validate --> Execute[🤖 AI: Execute]
+
+    subgraph "Same Interface"
+        direction TB
+        I1[Structured Input]
+        I2[Structured Output]
+        I3[Success / Fail / Timeout]
+        I4[Logged & Auditable]
+    end
+
+    style Validate fill:#ffe6e6,stroke:#cc0000,stroke-width:2px
+    style Extract fill:#e6f3ff
+    style Analyze fill:#e6f3ff
+    style Execute fill:#e6f3ff
+</div>
 
 The human node has the same interface as an AI node:
 - It receives structured input
@@ -157,15 +198,25 @@ This approach is supported by research from the Harvard Business School, which f
 
 When a human doesn't respond, the system shouldn't just... wait forever.
 
-```
-Initial assignment: Agent (SLA: 4 hours)
-        ↓ timeout
-Escalate to: Team Lead (SLA: 2 hours)
-        ↓ timeout
-Escalate to: Manager (SLA: 1 hour)
-        ↓ timeout
-Fallback: Auto-reject with notification to all parties
-```
+<div class="mermaid">
+graph TD
+    Task[📋 Task Arrives] --> Agent[👤 Agent<br/>SLA: 4 hours]
+    Agent -->|Response| Done[✅ Complete]
+    Agent -->|Timeout| Lead[👤 Team Lead<br/>SLA: 2 hours]
+    Lead -->|Response| Done
+    Lead -->|Timeout| Manager[👤 Manager<br/>SLA: 1 hour]
+    Manager -->|Response| Done
+    Manager -->|Timeout| Fallback[🛑 Auto-Reject<br/>+ Notify All]
+
+    Done --> Log[📋 Audit Log]
+    Fallback --> Log
+
+    style Agent fill:#e6ffe6
+    style Lead fill:#fff0e6
+    style Manager fill:#ffe6e6
+    style Fallback fill:#ffcccc
+    style Log fill:#e6e6ff
+</div>
 
 Every escalation is logged. At any point, auditors can see exactly what happened and why.
 
